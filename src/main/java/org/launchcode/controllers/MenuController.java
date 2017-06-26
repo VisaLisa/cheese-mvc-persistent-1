@@ -81,7 +81,7 @@ public class MenuController {
 
 
 
-    // TODO issue appears to be here, adding cheese to menu not working as intended //
+    // TODO issue appears to be here, adding cheese to menu not working as intended - could be due to AddMenuItemForm not properly passing errors//
 
     @RequestMapping (value = "add-item", method = RequestMethod.POST)
     public String addItem (Model model, @ModelAttribute @Valid AddMenuItemForm form, Errors errors) {
