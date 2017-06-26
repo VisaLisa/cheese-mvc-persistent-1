@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 /**
@@ -84,7 +83,7 @@ public class MenuController {
     // TODO issue appears to be here, adding cheese to menu not working as intended - could be due to AddMenuItemForm not properly passing errors//
 
     @RequestMapping (value = "add-item", method = RequestMethod.POST)
-    public String addItem (Model model, @ModelAttribute @Valid AddMenuItemForm form, Errors errors) {
+    public String addItem(Model model, @ModelAttribute @Valid AddMenuItemForm form, Errors errors) {
 
         if (errors.hasErrors()) {
             model.addAttribute("form", form);
