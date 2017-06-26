@@ -53,7 +53,7 @@ public class MenuController {
             return "menu/add";
         }
         menuDao.save(menu);
-        return "redirect:view/" + menu.getId()
+        return "redirect:view/" + menu.getId();
     }
 
     // left off at "View a Menu" in section 3.  Check To Dos for additional work! //
@@ -88,7 +88,7 @@ public class MenuController {
         }
 
         Cheese theCheese = cheeseDao.findOne(form.getCheeseId());
-        Menu theMenu = menuDao.findOne(form.getMenuId()):
+        Menu theMenu = menuDao.findOne(form.getMenuId());
         theMenu.addItem(theCheese);
         menuDao.save(theMenu);
 
