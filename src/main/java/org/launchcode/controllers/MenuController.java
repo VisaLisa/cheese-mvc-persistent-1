@@ -53,11 +53,11 @@ public class MenuController {
             return "menu/add";
         }
         menuDao.save(menu);
-        return "redirect:view/" + menu.getId();
+        return "redirect:/menu/view/" + menu.getId();
     }
 
     // left off at "View a Menu" in section 3.  Check To Dos for additional work! //
-    @RequestMapping (value = "vicw/{menuId}", method = RequestMethod.GET)
+    @RequestMapping (value = "view/{menuId}", method = RequestMethod.GET)
     public String viewMenu(Model model, @PathVariable int menuId) {
         Menu menu = menuDao.findOne(menuId);
             model.addAttribute("title", menu.getName());
@@ -67,7 +67,7 @@ public class MenuController {
         return "menu/view";
     }
 
-    @RequestMapping (value = "add/item/{menuId}", method = RequestMethod.GET)
+    @RequestMapping (value = "add-item/{menuId}", method = RequestMethod.GET)
     public String addItem (Model model, @PathVariable int menuId) {
             Menu menu = menuDao.findOne(menuId);
 
@@ -79,7 +79,11 @@ public class MenuController {
             return "menu/add-item";
         }
 
-    @RequestMapping (value = "add/item/{menuId}", method = RequestMethod.POST)
+
+
+    // TODO issue appears to be here, adding cheese to menu not working as intended //
+
+    @RequestMapping (value = "add-item", method = RequestMethod.POST)
     public String addItem (Model model, @ModelAttribute @Valid AddMenuItemForm form, Errors errors) {
 
         if (errors.hasErrors()) {
@@ -92,7 +96,7 @@ public class MenuController {
         theMenu.addItem(theCheese);
         menuDao.save(theMenu);
 
-        return "redirect:/menu/view" + theMenu.getId();
+        return "redirect:/menu/view/" + theMenu.getId();
 
     }
 }
